@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int total_subjects;
+	cout<<"Enter total subjects: "<<endl;
+	cin>>total_subjects;
+	string subject_names[total_subjects];	
+	int credits[total_subjects];
+	int i;
+	for(int i=0;i<total_subjects;i++){
+		cout<<"Enter subject "<<i+1<<": ";
+		cin>>subject_names[i];
+		cout<<"Enter credits for "<<subject_names[i]<<": ";
+		cin>>credits[i];
+	}
+	int attendence[total_subjects];
+	int ca[total_subjects];
+	int mid[total_subjects];
+	int ete[total_subjects];
+	int total[total_subjects];
+	for(int i=0;i<total_subjects;i++){
+		cout<<"Enter attendence for "<<subject_names[i]<<": ";
+		cin>>attendence[i];
+		cout<<"Enter ca for "<<subject_names[i]<<": ";
+		cin>>ca[i];
+		cout<<"Enter mid for "<<subject_names[i]<<": ";
+		cin>>mid[i];
+		cout<<"Enter ete for "<<subject_names[i]<<": ";
+		cin>>ete[i];
+		total[i]=attendence[i]+ca[i]+mid[i]+ete[i];
+		cout<<"Total for "<<subject_names[i]<<" is: "<<total[i]<<"\n";
+	}
+	int points[total_subjects];
+	for(int i=0;i<total_subjects;i++){
+		if(total[i]>=90&&total[i]<=100){
+			points[i]=10;
+		}
+		else if(total[i]>=80&&total[i]<=89){
+			points[i]=9;
+		}
+		else if(total[i]>=70&&total[i]<=79){
+			points[i]=8;
+		}
+		else if(total[i]>=60&&total[i]<=69){
+			points[i]=7;
+		}
+		else if(total[i]>=50&&total[i]<=59){
+			points[i]=6;
+		}
+		else if(total[i]>=40&&total[i]<=49){
+			points[i]=5;
+		}
+		else{
+			points[i]=0;
+		}
+	}
+	int fp[total_subjects];
+	for(int i=0;i<total_subjects;i++){
+		fp[i]=points[i]*credits[i];
+	}
+	int a=0;
+	for(int i=0;i<total_subjects;i++){
+		a+=fp[i];
+	}
+	int total_credits=0;
+	for(int i=0;i<total_subjects;i++){
+		total_credits+=credits[i];
+	}
+	float tc;
+	tc=(float)total_credits;
+	float a1;
+	a1=(float)a;
+	cout<<"CGPA: "<<a1/tc;
+}
